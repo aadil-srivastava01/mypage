@@ -36,14 +36,14 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
-defaults:
-  -
-    scope:
-      path:
-      type: "post"
-    values:
-      layout: "post"
-      author: "Aadil Srivastava" 
+# defaults:
+#   -
+#     scope:
+#       path:
+#       type: "post"
+#     values:
+#       layout: "post"
+#       author: "Aadil Srivastava" 
 
 
 # Exclude from processing.

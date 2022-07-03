@@ -40,7 +40,7 @@ Open Neural Network Exchange or ONNX is a unified format for deep learning and t
 
 Source: [Link](https://github.com/onnx/onnx/blob/master/docs/IR.md)
 
-![image.png](/assets/onnx_1.png)
+![image.png](./assets/onnx_1.png)
 
 ## Why use ONNX and ONNX Runtime?
 
@@ -68,7 +68,7 @@ Couple of reasons for using ONNX:
 
 FastAI currently doesn't natively support ONNX exports from FastAI learners. But by design FastAI is a high-level API of PyTorch. This allows us to extract the wrapped PyTorch model.PyTorch models can be natively exported to ONNX. So this is gonna be a 2 step process:
 
-![image.png](/assets/convert.png)
+![image.png](./assets/convert.png)
 
 Source: 
 * [Link](https://github.com/tkeyo/fastai-onnx/blob/main/fastai_to_onnx.ipynb)
@@ -100,7 +100,7 @@ dls.show_batch()
 {% endhighlight %}
 
 
-![png](/assets/output_7_0.png)
+![image.png](./assets/output_7_0.png)
 
 
 
@@ -111,7 +111,7 @@ learn = cnn_learner(dls, resnet18, metrics=error_rate)
 learn.fine_tune(3)
 {% endhighlight %}
 
-![png](/assets/train.png)
+![image.png](./assets/train.png)
 
 
 __Voilà!!__ We trained a Cat vs Dog classifier with a remarkable accuracy using FastAI in just 12 lines of code. This is the beauty of FastAI.
@@ -130,7 +130,7 @@ img.to_thumb(192)
 {% endhighlight %}
 
 
-![png](/assets/output_12_0.png)
+![png](./assets/output_12_0.png)
 
 
 ## Inference with FastAI learner
@@ -183,7 +183,7 @@ This final model will be used for ONNX conversion. FastAI learner also handles r
 
 ## Exporting PyTorch model to ONNX
 
-![image.png](/assets/convert2.png)
+![image.png](./assets/convert2.png)
 
 Pytorch has native support for ONNX, which means we can directly convert a Pytorch model in ONNX format and then can run it with ONNX Runtime.
 
@@ -275,20 +275,20 @@ print(f"It's a {labels[np.argmax(results)]}", results)
 
 As we have our ONNX model ready, we will now be deploying it on Nvidia Triton Server.
 
-![image.png](/assets/triton.png)
+![image.png](./assets/triton.png)
 
 Recommended read: [Deploying Deep Learning Models with Model Server](https://hackernoon.com/deploying-deep-learning-models-with-model-server)
 
 * Create a directory structure like this. The detailed instructions can be found in the official [readme](https://github.com/triton-inference-server/server/blob/main/docs/model_repository.md) provided by Nvidia:
 
-    ![image.png](/assets/tree.png)
+    ![image.png](./assets/tree.png)
 * Pull the required Triton Server Docker image and run the container, from your ```models``` directory using the following command:
 
     ```docker run --gpus=all --rm -it -p 8000-8002:8000-8002 --name triton_server -v $PWD:/models nvcr.io/nvidia/tritonserver:21.02-py3 tritonserver --model-repository=/models --strict-model-config=false```
    
 * Verify if your model is loaded properly or not. Once the model is loaded successfully, you should see the same printed in the docker logs and the status for the given model should be “READY”.
 
-    ![image.png](/assets/triton_ready.png)
+    ![image.png](./assets/triton_ready.png)
    
 
 * Now we will be creating a Triton Inference Client Script with gRPC

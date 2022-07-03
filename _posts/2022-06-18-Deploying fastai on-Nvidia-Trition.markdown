@@ -1,8 +1,9 @@
 ---
+breadcrumbs: true
 layout: posts
 title:  "Taking FastAI to Production"
 date:   2022-06-18 17:56:14 +0530
-categories: ML MLOPS
+categories: Posts
 permalink: /:categories/fastai_to_prod
 author: Aadil Srivastava
 ---
